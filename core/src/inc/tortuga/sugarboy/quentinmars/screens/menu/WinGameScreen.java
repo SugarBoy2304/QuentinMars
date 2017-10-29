@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 import inc.tortuga.sugarboy.quentinmars.Game;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.ButtonStyle;
+import inc.tortuga.sugarboy.quentinmars.utils.visual.ui.ButtonStyle;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.FontUtils;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.State;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.StateManager;
@@ -72,11 +72,6 @@ public class WinGameScreen extends State {
     @Override
     public void dispose() {
         stage.dispose();
-    }
-
-    @Override
-    protected void handleInput() {
-
     }
 
 }

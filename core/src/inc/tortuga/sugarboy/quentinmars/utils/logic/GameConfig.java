@@ -2,6 +2,9 @@ package inc.tortuga.sugarboy.quentinmars.utils.logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.utils.I18NBundle;
+
+import java.util.Locale;
 
 /**
  * Created by swift on 22.10.2017.
@@ -16,6 +19,9 @@ public class GameConfig {
     private String lang = "En";
     private float volume;
     private Preferences pref;
+    private I18NBundle bundle;
+
+    public float k;
 
     public GameConfig(int width, int height, String gameName, String deviceType) {
         this.width = width;
@@ -25,8 +31,14 @@ public class GameConfig {
     }
 
     public void load() {
+        this.k = Gdx.graphics.getWidth() / 1280F;
+
         pref = Gdx.app.getPreferences("inc.tortuga.sugarboy.QuenitMars.pref");
+
         this.lang = sifString("language", "En");
+        Locale locale = new Locale(lang);
+        bundle = I18NBundle.createBundle(Gdx.files.internal("languages/lang"), locale);
+
         this.volume = sifFloat("volume", 0.5F);
 
         // TODO баловство
@@ -51,8 +63,8 @@ public class GameConfig {
         return deviceType;
     }
 
-    public String getLang() {
-        return lang;
+    public I18NBundle getLang() {
+        return bundle;
     }
 
     public void setLang(String lang) {

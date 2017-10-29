@@ -1,7 +1,6 @@
 package inc.tortuga.sugarboy.quentinmars.screens.menu;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -10,7 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Timer;
 
 import inc.tortuga.sugarboy.quentinmars.Game;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.ButtonStyle;
+import inc.tortuga.sugarboy.quentinmars.utils.visual.ui.ButtonStyle;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.FontUtils;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.State;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.StateManager;
@@ -110,11 +109,6 @@ public class GameScreen extends State {
     @Override
     public void dispose() {
         stage.dispose();
-    }
-
-    @Override
-    protected void handleInput() {
-
     }
 
     public void setWin() {

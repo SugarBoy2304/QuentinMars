@@ -1,4 +1,4 @@
-package inc.tortuga.sugarboy.quentinmars.utils.visual;
+package inc.tortuga.sugarboy.quentinmars.utils.visual.ui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;

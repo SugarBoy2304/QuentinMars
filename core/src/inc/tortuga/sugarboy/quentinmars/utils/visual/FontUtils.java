@@ -14,13 +14,13 @@ public class FontUtils {
     private static GlyphLayout glyphLayout = new GlyphLayout();
     private static TextMessage textBonus;
 
-    public static int sendLeft(BitmapFont font, Batch batch, String text, int x, int y) {
+    public static int sendLeft(BitmapFont font, Batch batch, String text, float x, float y) {
         glyphLayout.setText(font, text);
         font.draw(batch, glyphLayout, x, y);
         return (int) glyphLayout.width;
     }
 
-    public static int sendCenter(BitmapFont font, Batch batch, String text, int x, int y) {
+    public static int sendCenter(BitmapFont font, Batch batch, String text, float x, float y) {
         if (text.contains("/n")) {
             String[] texts = text.split("/n");
             int plusY = 0;
@@ -36,13 +36,13 @@ public class FontUtils {
         return (int) glyphLayout.width;
     }
 
-    public static int sendRight(BitmapFont font, Batch batch, String text, int x, int y) {
+    public static int sendRight(BitmapFont font, Batch batch, String text, float x, float y) {
         glyphLayout.setText(font, text);
         font.draw(batch, glyphLayout, x - glyphLayout.width, y);
         return (int) glyphLayout.width;
     }
 
-    public static void sendCenter(BitmapFont font, String text, int x, int y, long time) {
+    public static void sendCenter(BitmapFont font, String text, float x, float y, long time) {
         textBonus = new TextMessage(font, text, x, y, time);
     }
 
@@ -61,11 +61,11 @@ public class FontUtils {
 
         public BitmapFont font;
         public String text;
-        public int x;
-        public int y;
+        public float x;
+        public float y;
         public long time;
 
-        public TextMessage(BitmapFont font, String text, int x, int y, long time) {
+        public TextMessage(BitmapFont font, String text, float x, float y, long time) {
             this.font = font; this.text = text; this.x = x; this.y = y; this.time = TimeUtils.nanoTime() + 50000000L * time;
         }
 
