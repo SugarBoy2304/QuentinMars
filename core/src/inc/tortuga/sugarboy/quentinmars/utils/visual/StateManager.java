@@ -25,7 +25,8 @@ public class StateManager {
     }
 
     public void setState(State state) {
-        pop(); push(state);
+        pop();
+        push(state);
     }
 
     public void update(float dt) {

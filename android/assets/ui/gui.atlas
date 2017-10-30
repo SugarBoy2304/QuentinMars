@@ -1,6 +1,6 @@
 
 gui.png
-size: 224,35
+size: 320,40
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -14,22 +14,31 @@ button.down
   index: -1
 button.up
   rotate: false
-  xy: 128, 3
+  xy: 64, 0
   size: 64, 32
   split: 6, 6, 6, 6
   orig: 64, 32
   offset: 0, 0
   index: -1
+div
+  rotate: false
+  xy: 128, 0
+  size: 64, 40
+  split: 17, 9, 17, 9
+  pad: 9, 9, 9, 9
+  orig: 64, 40
+  offset: 0, 0
+  index: -1
 knob
   rotate: false
-  xy: 192, 3
+  xy: 192, 0
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 slider
   rotate: false
-  xy: 64, 3
+  xy: 256, 0
   size: 64, 32
   split: 9, 9, 9, 9
   orig: 64, 32

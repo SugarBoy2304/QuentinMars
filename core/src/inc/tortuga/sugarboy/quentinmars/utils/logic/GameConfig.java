@@ -2,9 +2,12 @@ package inc.tortuga.sugarboy.quentinmars.utils.logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import java.util.Locale;
+
+import inc.tortuga.sugarboy.quentinmars.Game;
 
 /**
  * Created by swift on 22.10.2017.
@@ -31,20 +34,22 @@ public class GameConfig {
     }
 
     public void load() {
+        this.width = Gdx.graphics.getWidth();
+        this.height = Gdx.graphics.getHeight();
         this.k = Gdx.graphics.getWidth() / 1280F;
 
-        pref = Gdx.app.getPreferences("inc.tortuga.sugarboy.QuenitMars.pref");
+        this.pref = Gdx.app.getPreferences("inc.tortuga.sugarboy.QuenitMars.pref");
 
-        this.lang = sifString("language", "En");
-        Locale locale = new Locale(lang);
-        bundle = I18NBundle.createBundle(Gdx.files.internal("languages/lang"), locale);
+        this.lang = sifString("language", "en_EN");
+        Locale locale = new Locale(lang.split("_")[0], lang.split("_")[1]);
+        this.bundle = I18NBundle.createBundle(Gdx.files.internal("languages/lang"), locale);
 
         this.volume = sifFloat("volume", 0.5F);
 
         // TODO баловство
         Gdx.app.log("Loading..", "Test number #" + (10000000 + pref.putInteger("starters", sifInteger("starters", 0)+1).getInteger("starters")));
 
-        pref.flush();
+        this.pref.flush();
     }
 
     public int getWidth() {
@@ -69,10 +74,9 @@ public class GameConfig {
 
     public void setLang(String lang) {
         this.lang = lang;
-        pref.putString("language", lang);
-        pref.flush();
+        this.pref.putString("language", lang);
+        this.pref.flush();
     }
-
 
 
 

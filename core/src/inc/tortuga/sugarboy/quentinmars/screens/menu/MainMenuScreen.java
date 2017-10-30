@@ -25,9 +25,9 @@ public class MainMenuScreen extends State {
     private Table table;
     private Texture background;
 
-
-    public MainMenuScreen(final StateManager manager) {
+    public MainMenuScreen(final StateManager manager, float X) {
         super(manager);
+        this.x = X;
 
         stage = new Stage();
         table = new Table();
@@ -36,36 +36,39 @@ public class MainMenuScreen extends State {
 
         stage.addActor(new Actor());
 
-        System.out.println(lang().format("play"));
         GameButton buttonPlay = new GameButton(lang().format("play"));
         buttonPlay.a().pad(20F * _y);
         buttonPlay.a().setHeight(40F * _y);
+        table.add(buttonPlay.a()).pad(10F * _y).width(250F * _x);
+        table.row();
 
         GameButton buttonSetting = new GameButton(lang().format("settings"));
         buttonSetting.a().pad(20F * _y);
         buttonSetting.a().setHeight(40F * _y);
+        table.add(buttonSetting.a()).pad(10F * _y).width(250F * _x);
+        table.row();
 
         GameButton buttonAuthors = new GameButton(lang().format("authors"));
         buttonAuthors.a().pad(20F * _y);
         buttonAuthors.a().setHeight(40F * _y);
-
-
-        table.add(buttonPlay.a()).pad(10F * _y).width(250F * _x);
-        table.row();
-        table.add(buttonSetting.a()).pad(10F * _y).width(250F * _x);
-        table.row();
         table.add(buttonAuthors.a()).pad(10F * _y).width(250F * _x);
         table.row();
-        table.setPosition(Gdx.graphics.getWidth() - 175 * _x, 150F * _y);
-        stage.addActor(table);
+        buttonAuthors.eventOff(new Runnable() {
+            @Override
+            public void run() {
+                manager.push(new AuthorsMenuScreen(manager, x));
+            }
+        });
 
+        table.setPosition(Gdx.graphics.getWidth() - 175 * _x, 150F * _y);
+
+        stage.addActor(table);
         Gdx.input.setInputProcessor(stage);
     }
 
 
     @Override
     public void update(float dt) {
-        stage.act(dt);
         x += dt;
     }
 
@@ -84,6 +87,7 @@ public class MainMenuScreen extends State {
     @Override
     public void dispose() {
         background.dispose();
+        stage.dispose();
     }
 
 }

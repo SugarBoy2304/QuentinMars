@@ -73,7 +73,6 @@ public class GameScreen extends State {
                         button.setStyle(isX ? styles.forX() : styles.forO());
 
                         if (checkWin(_x, _y)) {
-                            setWin();
                             return true;
                         }
 
@@ -109,15 +108,6 @@ public class GameScreen extends State {
     @Override
     public void dispose() {
         stage.dispose();
-    }
-
-    public void setWin() {
-        Timer.schedule(new Timer.Task() {
-            @Override
-            public void run() {
-                manager.push(new WinGameScreen(manager, isX ? '1' : 'O'));
-            }
-        }, 0.5F);
     }
 
     public boolean checkWin(int _x, int _y) {

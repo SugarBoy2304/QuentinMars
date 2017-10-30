@@ -8,6 +8,11 @@ import inc.tortuga.sugarboy.quentinmars.utils.logic.GameConfig;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+
+		// 480x720
+		// 640x960
+		// 1080х1920
+
 		config.title = "Quentin Mars";
 		config.width = 1280;
 		config.height = 720;

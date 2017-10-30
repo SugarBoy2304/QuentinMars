@@ -20,6 +20,9 @@ public class Game extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private StateManager stateManager;
 
+	// TODO remove
+	public Texture debug;
+
 	public Game(GameConfig config) {
 		instance = this;
 		this.config = config;
@@ -43,15 +46,19 @@ public class Game extends ApplicationAdapter {
 
 	@Override
 	public void create () {
-		config.load();
 		batch = new SpriteBatch();
+
+		debug = new Texture("ui/menu/debug.png");
+
+		config.load();
 		fonts = new Fonts();
 		stateManager = new StateManager();
-		stateManager.push(new MainMenuScreen(stateManager));
+		stateManager.push(new MainMenuScreen(stateManager, 0F));
 	}
 
 	@Override
 	public void render () {
+		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stateManager.update(Gdx.graphics.getDeltaTime());
 		stateManager.render(batch);
@@ -59,6 +66,9 @@ public class Game extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
+		System.out.println("Sooqa $");
 		batch.dispose();
+		debug.dispose();
+		stateManager.getState().dispose();
 	}
 }

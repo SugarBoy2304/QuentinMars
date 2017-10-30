@@ -2,6 +2,7 @@ package inc.tortuga.sugarboy.quentinmars;
 
 import android.os.Bundle;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 
@@ -12,6 +13,8 @@ public class AndroidLauncher extends AndroidApplication {
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		initialize(new Game(new GameConfig(720, 1280, "Quentin Mars", "Android")), config);
+		config.useCompass = false;
+		config.useAccelerometer = false;
+		initialize(new Game(new GameConfig(0, 0, "Quentin Mars", "Android")), config);
 	}
 }

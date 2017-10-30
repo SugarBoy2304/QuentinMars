@@ -22,16 +22,18 @@ import inc.tortuga.sugarboy.quentinmars.screens.menu.MainMenuScreen;
 public class GameButton {
 
     private static final Map<String, TextButton.TextButtonStyle> styles = new HashMap<String, TextButton.TextButtonStyle>();
-    private TextureAtlas atlas;
-    private Skin skin;
+    private static TextureAtlas atlas;
+    private static Skin skin;
 
     private Runnable onEvent;
     private Runnable offEvent;
+    private InputListener listener;
 
     private TextButton button;
 
     public GameButton(String text, String style) {
         this.button = new TextButton(text, load(style));
+        updateListener();
     }
 
     public GameButton(String text) {
@@ -65,22 +67,22 @@ public class GameButton {
     }
 
     public void updateListener() {
-        button.clearListeners();
-        button.addListener(new InputListener() {
+        button.getListeners().removeValue(listener, true);
+        button.addListener(listener = new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                onEvent.run();
+                if (onEvent != null) onEvent.run();
                 return true;
             }
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int b) {
-                offEvent.run();
+                if (offEvent != null) offEvent.run();
             }
         });
     }
 
-    public TextButton.TextButtonStyle load(String key) {
+    public static TextButton.TextButtonStyle load(String key) {
         key = key.toLowerCase();
         if (styles.containsKey(key)) return styles.get(key);
 
@@ -102,4 +104,11 @@ public class GameButton {
 
     }
 
+    public static Skin getSkin() {
+        return skin;
+    }
+
+    public void setPosition(float w) {
+
+    }
 }

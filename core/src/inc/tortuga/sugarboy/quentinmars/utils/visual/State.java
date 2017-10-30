@@ -34,7 +34,7 @@ public abstract class State {
     }
 
     public float w(float w, float W) {
-        return (Gdx.graphics.getWidth() / 2F - (W / 2F) + w * _x);
+        return (Gdx.graphics.getWidth() / 2F  + w * _x - (W / 2F * _x));
     }
 
     public float w(float w) {
@@ -42,7 +42,7 @@ public abstract class State {
     }
 
     public float h(float h, float H) {
-        return (Gdx.graphics.getHeight() / 2F - (H / 2F) + h * _y);
+        return (Gdx.graphics.getHeight() / 2F + h * _y - (H / 2F * _y) );
     }
 
     public float h(float h) {
