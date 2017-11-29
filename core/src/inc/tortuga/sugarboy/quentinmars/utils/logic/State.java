@@ -1,4 +1,4 @@
-package inc.tortuga.sugarboy.quentinmars.utils.visual;
+package inc.tortuga.sugarboy.quentinmars.utils.logic;
 
 /**
  * Created by swift on 22.10.2017.
@@ -7,7 +7,6 @@ package inc.tortuga.sugarboy.quentinmars.utils.visual;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.I18NBundle;
 
 import inc.tortuga.sugarboy.quentinmars.Game;
@@ -20,7 +19,7 @@ public abstract class State {
     protected float _x;
     protected float _y;
 
-    public State(StateManager manager) {
+    public State(final StateManager manager) {
         this.manager = manager;
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -47,6 +46,10 @@ public abstract class State {
 
     public float h(float h) {
         return this.h(h, 0F);
+    }
+
+    public OrthographicCamera getCamera() {
+        return this.camera;
     }
 
 

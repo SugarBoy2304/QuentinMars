@@ -5,11 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 
 import inc.tortuga.sugarboy.quentinmars.screens.menu.MainMenuScreen;
 import inc.tortuga.sugarboy.quentinmars.utils.logic.GameConfig;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.Fonts;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.StateManager;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.StateManager;
 
 public class Game extends ApplicationAdapter {
 
@@ -54,6 +55,8 @@ public class Game extends ApplicationAdapter {
 		fonts = new Fonts();
 		stateManager = new StateManager();
 		stateManager.push(new MainMenuScreen(stateManager, 0F));
+
+		ShaderProgram.pedantic = false;
 	}
 
 	@Override

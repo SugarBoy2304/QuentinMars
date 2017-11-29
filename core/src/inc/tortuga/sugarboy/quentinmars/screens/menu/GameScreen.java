@@ -11,8 +11,8 @@ import com.badlogic.gdx.utils.Timer;
 import inc.tortuga.sugarboy.quentinmars.Game;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.ui.ButtonStyle;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.FontUtils;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.State;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.StateManager;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.State;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.StateManager;
 
 /**
  * Created by swift on 28.10.2017.

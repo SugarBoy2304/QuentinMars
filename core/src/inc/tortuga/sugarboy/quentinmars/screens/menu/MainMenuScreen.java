@@ -8,9 +8,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 
 import inc.tortuga.sugarboy.quentinmars.Game;
+import inc.tortuga.sugarboy.quentinmars.screens.game.*;
+import inc.tortuga.sugarboy.quentinmars.screens.game.GameScreen;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.FontUtils;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.State;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.StateManager;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.State;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.StateManager;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.ui.GameButton;
 
 /**
@@ -41,6 +43,12 @@ public class MainMenuScreen extends State {
         buttonPlay.a().setHeight(40F * _y);
         table.add(buttonPlay.a()).pad(10F * _y).width(250F * _x);
         table.row();
+        buttonPlay.eventOff(new Runnable() {
+            @Override
+            public void run() {
+                manager.push(new GameScreen(manager, 1));
+            }
+        });
 
         GameButton buttonSetting = new GameButton(lang().format("settings"));
         buttonSetting.a().pad(20F * _y);
@@ -60,7 +68,7 @@ public class MainMenuScreen extends State {
             }
         });
 
-        table.setPosition(Gdx.graphics.getWidth() - 175 * _x, 150F * _y);
+        table.setPosition(Gdx.graphics.getWidth() - 175F * _x, 150F * _y);
 
         stage.addActor(table);
         Gdx.input.setInputProcessor(stage);

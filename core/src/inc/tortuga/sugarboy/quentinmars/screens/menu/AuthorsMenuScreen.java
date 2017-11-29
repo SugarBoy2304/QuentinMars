@@ -4,17 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 import inc.tortuga.sugarboy.quentinmars.Game;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.ui.ButtonStyle;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.FontUtils;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.State;
-import inc.tortuga.sugarboy.quentinmars.utils.visual.StateManager;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.State;
+import inc.tortuga.sugarboy.quentinmars.utils.logic.StateManager;
 import inc.tortuga.sugarboy.quentinmars.utils.visual.ui.GameButton;
 
 /**
@@ -44,7 +40,7 @@ public class AuthorsMenuScreen extends State {
         button.a().pad(20F * _x);
         button.a().setWidth(250F * _x);
         button.a().setHeight(70F * _y);
-        button.setPosition(465 * _x, -300 * _y);
+        button.setPosition(465F * _x, -300F * _y);
         button.updateListener();
         button.eventOff(new Runnable() {
             @Override
@@ -66,7 +62,7 @@ public class AuthorsMenuScreen extends State {
     @Override
     public void render(SpriteBatch sb) {
         sb.begin();
-        sb.draw(background, 0, 0, 1280 * _x, 720 * _y);
+        sb.draw(background, 0F, 0F, 1280F * _x, 720F * _y);
 
         FontUtils.sendLeft(Game.get().getFonts().main_big, sb, "Quentin Mars",
                 -540F * _x + w((float) Math.cos(x) * 15F),
@@ -78,7 +74,7 @@ public class AuthorsMenuScreen extends State {
                 textRec[0] * 1.15F,
                 textRec[1] * 1.15F);
 
-        textRec = FontUtils.sendMiddleCenter(Game.get().getFonts().orbitron, sb, w(0), h(0), lang().format("authors-more"));
+        textRec = FontUtils.sendMiddleCenter(Game.get().getFonts().orbitron, sb, w(0F), h(0F), lang().format("authors-more"));
         sb.end();
         stage.draw();
     }
@@ -88,10 +84,6 @@ public class AuthorsMenuScreen extends State {
         if (background != null) background.dispose();
         skin.getAtlas().dispose();
         skin.dispose();
-    }
-
-    public float getX() {
-        return this.x;
     }
 
 }

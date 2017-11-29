@@ -1,4 +1,4 @@
-package inc.tortuga.sugarboy.quentinmars.utils.visual;
+package inc.tortuga.sugarboy.quentinmars.utils.logic;
 
 /**
  * Created by swift on 22.10.2017.
