@@ -84,7 +84,11 @@ public class MainMenuScreen extends State {
     public void render(SpriteBatch sb) {
 
         sb.begin();
+        sb.getShader().setUniformi("u_render", 1);
         sb.draw(background, 0F, 0F, 1280F * _x, 720F * _y);
+        sb.end();
+        sb.begin();
+        sb.getShader().setUniformi("u_render", 0);
         FontUtils.sendLeft(Game.get().getFonts().main_big, sb, "Quentin Mars",
                 -540F * _x + w((float) Math.cos(x) * 15F),
                 240F * _y + h((float) Math.sin(x) * 50F));

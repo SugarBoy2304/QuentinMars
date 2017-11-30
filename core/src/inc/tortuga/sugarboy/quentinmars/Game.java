@@ -20,6 +20,7 @@ public class Game extends ApplicationAdapter {
 	private Fonts fonts;
 	private SpriteBatch batch;
 	private StateManager stateManager;
+	public ShaderProgram shader;
 
 	// TODO remove
 	public Texture debug;
@@ -56,7 +57,14 @@ public class Game extends ApplicationAdapter {
 		stateManager = new StateManager();
 		stateManager.push(new MainMenuScreen(stateManager, 0F));
 
+//C:\Users\swift\Desktop\LibGDX\Quentin Mars\core\src\inc\tortuga\sugarboy\quentinmars\shaders\fShader.frag
 		ShaderProgram.pedantic = false;
+		shader = new ShaderProgram(Gdx.files.internal("shaders/fShader.vert"), Gdx.files.internal("shaders/fShader.frag"));
+		if (!shader.isCompiled()) {
+			System.err.println(shader.getLog());
+			System.exit(-2894);
+		}
+		batch.setShader(shader);
 	}
 
 	@Override

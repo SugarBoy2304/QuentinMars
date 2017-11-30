@@ -54,5 +54,4 @@ public interface Entity {
      * Если был вызван метод dispose, то должен вернуться true
      * **/
     boolean isDie();
-
 }
